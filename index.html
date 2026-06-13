@@ -247,10 +247,15 @@
         <h2>ℹ️ À propos de l'application</h2>
         <p>Cette application reproduit la <strong>Grille d'auto-évaluation des symptômes pour les adultes atteints du TDAH (ASRS-v1.1)</strong>, un outil de dépistage reconnu et utilisé par les professionnels de santé.</p>
         <p style="font-size:.78rem;color:var(--muted);font-style:italic;">Outil de dépistage uniquement — ne remplace pas un avis médical ni un diagnostic professionnel.</p>
+
+        <p style="margin-top:14px;font-size:.78rem;color:var(--muted);font-weight:700;">🔒 Confidentialité</p>
+        <p>Cette application fonctionne <strong>entièrement sur votre appareil</strong> : aucune donnée n'est envoyée ni stockée sur un serveur.</p>
+        <p>Vos réponses ne sont <strong>pas sauvegardées</strong> : elles disparaissent si vous fermez ou rechargez la page (le résultat n'est visible que pendant votre session, ou peut être imprimé/exporté en PDF).</p>
+        <p>Le navigateur conserve uniquement une petite information technique permettant de détecter les mises à jour de l'application — aucune information personnelle ou médicale n'est mémorisée.</p>
       </div>
       <div style="padding:14px 20px 0;">
         <button class="guide-close" onclick="toggleGuide()">✕ Fermer cette fenêtre</button>
-        <div style="text-align:center; padding:10px 0 6px; color:var(--muted); font-size:.68rem; font-weight:600; letter-spacing:.5px;">v1.0 — Build 11 — MàJ 12/06/2026</div>
+        <div style="text-align:center; padding:10px 0 6px; color:var(--muted); font-size:.68rem; font-weight:600; letter-spacing:.5px;">v1.0 — Build 12 — MàJ 12/06/2026</div>
       </div>
     </div><!-- /content-apropos -->
 
@@ -258,6 +263,23 @@
 </div>
 
 <script>
+// --- Vérification de version / rechargement forcé si mise à jour ---
+const APP_BUILD = 12;
+(function checkAppVersion() {
+  try {
+    const stored = localStorage.getItem('asrsAppBuild');
+    if (stored !== String(APP_BUILD)) {
+      localStorage.setItem('asrsAppBuild', String(APP_BUILD));
+      if (stored !== null) {
+        // Une version précédente était en cache : on force un rechargement propre
+        location.reload(true);
+      }
+    }
+  } catch (e) {
+    // localStorage indisponible (mode privé strict) : on ignore silencieusement
+  }
+})();
+
 const echelle = ['Jamais','Rarement','Parfois','Souvent','Très souvent'];
 
 // Cases ombragées (réponses considérées comme significatives) pour la Partie A,
