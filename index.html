@@ -171,7 +171,7 @@
   <div class="card">
     <div class="section-title">👤 Informations</div>
     <div class="form-row" style="flex-direction:column;align-items:stretch;gap:6px;">
-      <label class="form-label">Nom du patient</label>
+      <label class="form-label">Votre nom</label>
       <input type="text" id="nomPatient" class="form-input" placeholder="Nom et prénom">
     </div>
     <div class="form-row" style="flex-direction:column;align-items:stretch;gap:6px;margin-top:10px;margin-bottom:0;">
@@ -179,7 +179,7 @@
       <input type="date" id="dateAuj" class="form-input">
     </div>
     <div class="info-box">
-      Répondez aux 18 questions ci-dessous en vous basant sur la fréquence à laquelle chaque symptôme est apparu au cours des <strong>six derniers mois</strong>. Remettez ensuite cette grille complétée à votre professionnel de santé.
+      Répondez aux 18 questions ci-dessous en vous basant sur la fréquence à laquelle chaque symptôme est apparu au cours des <strong>six derniers mois</strong>. Vous pourrez ensuite, si vous le souhaitez, remettre cette grille complétée à votre professionnel de santé.
     </div>
   </div>
 
@@ -227,7 +227,7 @@
         <h2>📖 À propos de ce questionnaire</h2>
         <p><strong>Description :</strong> cette grille présente les dix-huit critères du DSM-IV-TR liés au trouble déficitaire de l'attention avec ou sans hyperactivité (TDAH). Les six premières questions (Partie A) sont considérées comme les plus représentatives des symptômes du TDAH chez l'adulte et constituent l'élément central du dépistage avec l'ASRS v1.1.</p>
         <p><strong>Comment répondre :</strong> pour chaque question, indiquez la fréquence à laquelle le symptôme est apparu au cours des <strong>six derniers mois</strong>, en choisissant parmi : Jamais, Rarement, Parfois, Souvent, Très souvent.</p>
-        <p><strong>Interprétation de la Partie A :</strong> si 4 réponses ou plus se situent dans les cases considérées comme significatives, cela indique que le patient présente des symptômes correspondant fortement à ceux observés chez les adultes atteints de TDAH, et qu'une investigation plus approfondie est recommandée.</p>
+        <p><strong>Interprétation de la Partie A :</strong> si 4 réponses ou plus se situent dans les cases considérées comme significatives, cela indique que vous présentez des symptômes correspondant fortement à ceux observés chez les adultes atteints de TDAH, et qu'une investigation plus approfondie est recommandée.</p>
         <p><strong>Partie B :</strong> ces 12 questions complémentaires fournissent des indices additionnels sur la gravité des symptômes, mais ne sont pas utilisées pour établir le dépistage initial.</p>
         <p style="margin-top:12px;"><strong>📚 Origine :</strong> la grille ASRS-v1.1 a été développée en collaboration avec l'Organisation mondiale de la Santé (OMS) et un groupe de travail incluant notamment :</p>
         <ul>
@@ -245,7 +245,7 @@
     <div class="guide-tab-content" id="content-apropos">
       <div class="guide-section">
         <h2>ℹ️ À propos de l'application</h2>
-        <p>Cette application reproduit la <strong>Grille d'auto-évaluation des symptômes pour les adultes atteints du TDAH (ASRS-v1.1)</strong>, telle que présentée dans le manuel fourni au professionnel de santé.</p>
+        <p>Cette application reproduit la <strong>Grille d'auto-évaluation des symptômes pour les adultes atteints du TDAH (ASRS-v1.1)</strong>, un outil de dépistage reconnu et utilisé par les professionnels de santé.</p>
         <p style="font-size:.78rem;color:var(--muted);font-style:italic;">Outil de dépistage uniquement — ne remplace pas un avis médical ni un diagnostic professionnel.</p>
       </div>
       <div style="padding:14px 20px 0;">
@@ -363,7 +363,7 @@ function afficherResultat() {
   document.getElementById('resultValA').textContent = scoreASignificatif + ' / 6';
   if (positif) {
     box.className = 'result-box positif';
-    msg.innerHTML = '⚠️ Le patient présente des symptômes correspondant grandement à ceux des adultes atteints de TDAH.<br>Une investigation plus approfondie est recommandée.';
+    msg.innerHTML = '⚠️ Vous présentez des symptômes correspondant grandement à ceux des adultes atteints de TDAH.<br>Une investigation plus approfondie est recommandée.';
   } else {
     box.className = 'result-box negatif';
     msg.innerHTML = '✅ Le seuil de dépistage (4 cases significatives ou plus) n\'est pas atteint sur la Partie A.';
@@ -374,7 +374,7 @@ function afficherResultat() {
   for (let i=0;i<12;i++) { if (reponses['B'+i] >= 3) bSignif++; }
   document.getElementById('resultDetail').innerHTML =
     '<strong>Partie B :</strong> '+bSignif+' / 12 réponses fréquentes ou très fréquentes.<br>'+
-    'Ces réponses ne sont pas utilisées pour le dépistage, mais peuvent fournir des indices complémentaires sur la sévérité et le retentissement des symptômes — à explorer avec le patient (contexte professionnel, social, familial, antécédents dans l\'enfance).';
+    'Ces réponses ne sont pas utilisées pour le dépistage, mais peuvent fournir des indices complémentaires sur la sévérité et le retentissement des symptômes — à explorer avec votre médecin (contexte professionnel, social, familial, antécédents dans l\'enfance).';
 
   document.getElementById('resultCard').style.display = 'block';
   buildPrintSummary(scoreASignificatif, positif, bSignif);
